@@ -43,7 +43,12 @@ module.exports = {
             subject: data.subject,
             message: data.message,
             signer_roles: newroles,
-            cc_roles: data.ccroles
+            cc_roles: data.ccroles,
+            merge_fields: [
+              {name:'employee_name', type: 'text'},
+              {name: 'employee_position', type: 'text'},
+              {name: 'verified', type: 'checkbox'},
+            ],
         };
 
         hellosign.template.createEmbeddedDraft(options)
@@ -151,25 +156,49 @@ module.exports = {
 
     sendRequestFromTemplate: function(data, cb){
 
-        var options = {
-            test_mode : 1,
-            template_id : data.templateId,
-            title : data.title,
-            subject : data.subject,
-            message : data.message,
-            signers : data.signers,
-            allow_decline:1
-        };
+      const employeeName = {"name": "employee_name", "value": "Bob Smith"};
+      const employeePosition = {"name": "employee_position", "value": "Manager"};
+      const isVerified = {"name": "verified", "type": "checkbox"};
 
-        hellosign.signatureRequest.sendWithTemplate(options)
-            .then(function(response){
-                cb(response)
-            })
-            .catch(function(err){
-                console.log(err);
-                cb(err);
-            });
-
+      hellosign.template.get(data.templateId)
+        .then((templateInfo) => {
+          const fieldNames = templateInfo.template.custom_fields;
+          const presentNames = fieldNames.map(name => {
+            return name.name;
+          })
+          console.log('presentNames', presentNames);
+          return presentNames;
+        })
+        .then((fields) => {
+           const customFields = [];
+           if (fields.includes('employee_name')) {
+             customFields.push(employeeName);
+           }
+           if (fields.includes('employee_position')) {
+             customFields.push(employeePosition);
+           }
+           if (fields.includes('verified')) {
+             customFields.push(isVerified);
+           }
+           var options = {
+             test_mode : 1,
+             template_id : data.templateId,
+             title : data.title,
+             subject : data.subject,
+             message : data.message,
+             signers : data.signers,
+             custom_fields: customFields,
+             allow_decline:1
+           };
+           hellosign.signatureRequest.sendWithTemplate(options)
+           .then(function(response){
+             cb(response)
+           })
+           .catch(function(err){
+             console.log(err);
+             cb(err);
+           });
+        })
     },
 
     recordRequest: function(data, response, cb){
