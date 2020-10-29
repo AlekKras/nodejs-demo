@@ -5,7 +5,7 @@
   "main": "main.js",
   "author": "irwynks",
   "dependencies": {
-    "async": "^2.4.1",
+    "async": "^3.2.0",
     "body-parser": "^1.17.2",
     "color-thief": "*",
     "express": "^4.15.3",
