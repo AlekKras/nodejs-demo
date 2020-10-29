@@ -9,7 +9,7 @@
     "body-parser": "^1.17.2",
     "color-thief": "*",
     "express": "^4.15.3",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.2.0",
     "hellosign-sdk": "^1.1.13",
     "moment": "^2.18.1",
     "mongoose": "^4.10.5",
