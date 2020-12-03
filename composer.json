@@ -1,0 +1,109 @@
+{
+    "name": "hellosign/hellofax",
+    "description": "Internal dependencies for HelloSign/HelloFax",
+    "type": "project",
+    "license": "proprietary",
+    "config": {
+        "platform-check": false
+    },
+    "require": {
+        "php": "^7.3",
+        "ext-apc": "*",
+        "ext-cairo": "*",
+        "ext-calendar": "*",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-iconv": "*",
+        "ext-imagick": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-memcached": "*",
+        "ext-oauth": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-redis": ">=5.3.2",
+        "ext-simplexml": "*",
+        "ext-sodium": "*",
+        "ext-sysvsem": "*",
+        "ext-zip": "*",
+        "guzzlehttp/psr7": "1.6.1",
+        "aws/aws-sdk-php": "3.133.6",
+        "google/recaptcha": "1.2.3",
+        "firebase/php-jwt": "5.0.0",
+        "guzzlehttp/guzzle": "6.5.2",
+        "onelogin/php-saml": "3.4.1",
+        "pda/pheanstalk": "2.1.1",
+        "erusev/parsedown": "1.7.4",
+        "splitsoftware/split-sdk-php": "6.2.3",
+        "ua-parser/uap-php": "3.9.4",
+        "stripe/stripe-php": "7.22.0",
+        "ejsmont-artur/php-circuit-breaker": "0.1.0",
+        "predis/predis": "1.1.1",
+        "hellosign/hellosign-php-sdk": "3.5.7",
+        "php-amqplib/php-amqplib": "2.11.0",
+        "google/apiclient": "2.4.0",
+        "twilio/sdk": "5.42.2",
+        "geoip2/geoip2": "2.10.0",
+        "elasticsearch/elasticsearch": "6.7.2",
+        "pimple/pimple": "3.2.3",
+        "tuupola/base62": "2.0.0",
+        "paragonie/csp-builder": "2.4.0",
+        "microsoft/microsoft-graph": "1.12.0",
+        "symfony/dom-crawler": "5.0",
+        "symfony/finder": "5.0.8",
+        "symfony/http-foundation": "5.0.8",
+        "symfony/messenger": "5.0.8",
+        "symfony/translation": "5.0.8",
+        "symfony/yaml": "5.0.8",
+        "symfony/intl": "5.0.8",
+        "league/oauth1-client": "1.7.0",
+        "dflydev/hawk": "0.0.0",
+        "jakubkulhan/chrome-devtools-protocol": "1.0.2",
+        "spatie/dropbox-api": "1.14",
+        "hello/core": "0.0.10",
+        "hellosign/helloworks-php-sdk": "0.0.1",
+        "giggsey/libphonenumber-for-php": "8.12.10"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "phpunit/phpunit": "8.5.2",
+        "brianium/paratest": "3.1.2",
+        "fzaninotto/faker": "^1.8",
+        "symfony/var-dumper":"^5.0",
+        "squizlabs/php_codesniffer": "3.4.2",
+        "slevomat/coding-standard": "^5.0",
+        "dropbox/lightsaml": "^2.0",
+        "phpunit/php-code-coverage": "^7.0",
+        "symfony/console": "^5.0",
+        "symfony/polyfill-intl-messageformatter": "^1.14",
+        "psr/http-message": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://hellosign.jfrog.io/hellosign/api/composer/composer-local"
+        },
+        {
+            "type": "composer",
+            "url": "https://hellosign.jfrog.io/hellosign/api/composer/composer-remote"
+        },
+        {
+            "packagist": false
+        }
+    ],
+    "suggest": {
+        "ext-pcov": "Allows code coverage reporting when running tests"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hello\\": "src/Hello"
+        },
+        "files": ["src/Hello/Translation/Helper.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hello\\Tests\\Lib\\": "tests/lib"
+        }
+    }
+}
